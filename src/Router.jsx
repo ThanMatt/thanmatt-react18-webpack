@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { useRoutes, Outlet } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 const req = require.context('./pages', true, /route\.js$/)
@@ -9,26 +9,23 @@ req.keys().forEach((key) => {
 })
 
 const Router = () => {
-  return (
-    <Routes>
-      {routes.map(({ element, title, ...route }, index) => {
-        return (
-          <Route
-            key={index}
-            {...route}
-            element={
-              <>
-                <Helmet>
-                  <title>{title}</title>
-                </Helmet>
-                {element}
-              </>
-            }
-          />
+  const elements = useRoutes(
+    routes.map(({ element, title, ...route }) => {
+      return {
+        ...route,
+        element: (
+          <>
+            <Helmet>
+              <title>{title}</title>
+            </Helmet>
+            {element}
+            {!!route.children?.length && <Outlet />}
+          </>
         )
-      })}
-    </Routes>
+      }
+    })
   )
+  return elements
 }
 
 export default Router

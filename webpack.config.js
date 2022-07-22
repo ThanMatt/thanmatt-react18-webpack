@@ -33,6 +33,7 @@ module.exports = {
   },
   output: {
     filename: 'main.js',
+    publicPath: '/',
     path: path.resolve(__dirname, 'build')
   }
 }
