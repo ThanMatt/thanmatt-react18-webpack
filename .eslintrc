@@ -19,15 +19,9 @@
       "version": "detect"
     },
     "import/resolver": {
-      "webpack": {
-        "config": {
-          "resolve": {
-            "alias": {
-              "@": "./src"
-            },
-            "extensions": [".js", ".jsx"]
-          }
-        }
+      "alias": {
+        "extensions": [".js", ".jsx"],
+        "map": [["@", "./src"]]
       }
     }
   },

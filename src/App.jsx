@@ -1,5 +1,11 @@
+import Router from '@/Router'
+
 const App = () => {
-  return <h1>This is react</h1>
+  return (
+    <div>
+      <Router />
+    </div>
+  )
 }
 
 export default App
