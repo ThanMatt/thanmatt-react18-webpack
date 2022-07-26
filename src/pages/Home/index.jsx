@@ -1,5 +1,5 @@
 const Home = () => {
-  return <p>This is home</p>
+  return <p>React 18 + Webpack</p>
 }
 
 export default Home

@@ -2,7 +2,8 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './index.js',
+  mode: 'development',
+  entry: path.resolve(__dirname, './index.js'),
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html')
@@ -14,6 +15,10 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
+      },
+      {
+        test: /\.(css)$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -32,7 +37,7 @@ module.exports = {
     port: 3000
   },
   output: {
-    filename: 'main.js',
+    filename: 'bundle.js',
     publicPath: '/',
     path: path.resolve(__dirname, 'build')
   }
