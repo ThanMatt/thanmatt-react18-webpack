@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   mode: 'development',
   entry: path.resolve(__dirname, './index.js'),
+  devtool: 'eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html')
@@ -17,8 +18,14 @@ module.exports = {
         use: ['babel-loader']
       },
       {
-        test: /\.(css)$/,
-        use: ['style-loader', 'css-loader']
+        test: /\.(c|sa|sc)ss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|svg|jpg|png)$/,
+        use: {
+          loader: 'url-loader'
+        }
       }
     ]
   },
